@@ -14,25 +14,26 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author DALO FAUSTIN
  */
-public class VteArtFrm   extends javax.swing.JFrame {
-
+public class VteArtFrm extends javax.swing.JFrame {
     
-   private static ArtDAO DAO;
+    
+  private static ArtDAO DAO;
   private ListArt list ;
   private String  [] data ;
-    
-    
+   String value ="";
+  int vendu=0;
+   
+    /**
+     * Creates new form VteArtFrm
+     */
     public VteArtFrm() throws SQLException {
-        
-        
         initComponents();
         
-        try {
+         try {
             
             this.DAO = new ArtDAO();
            
@@ -44,7 +45,6 @@ public class VteArtFrm   extends javax.swing.JFrame {
         
         populate_Cat();
         //populate_Marq();
-      
     }
 
     /**
@@ -55,239 +55,180 @@ public class VteArtFrm   extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("librairie?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        categorieQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Categorie c");
-        categorieList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : categorieQuery.getResultList();
-        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        cat_combo = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        marq_combo = new javax.swing.JComboBox();
-        prx_total_txt = new javax.swing.JTextField();
-        prx_vte_txt = new javax.swing.JTextField();
-        btn_valid = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        cat_combo = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
+        marq_combo = new javax.swing.JComboBox();
+        qte_vendu_txt = new javax.swing.JTextField();
+        qte_dispo_txt = new javax.swing.JTextField();
+        btn_valid = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        qtel_txt = new javax.swing.JTextField();
-        qte_dispo = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        prx_total_txt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        prx_vte_txt = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-
-        jLabel7.setText("jLabel7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Categorie:");
 
-        cat_combo.setMaximumRowCount(30);
+        cat_combo.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         cat_combo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cat_comboItemStateChanged(evt);
             }
         });
-        cat_combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cat_comboActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Categorie");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cat_combo, org.jdesktop.beansbinding.ObjectProperty.create(), marq_combo, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
-        marq_combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                marq_comboActionPerformed(evt);
-            }
-        });
-
-        prx_total_txt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prx_total_txtActionPerformed(evt);
-            }
-        });
-        prx_total_txt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                prx_total_txtKeyTyped(evt);
-            }
-        });
-
-        prx_vte_txt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        prx_vte_txt.setEnabled(false);
-
-        btn_valid.setBackground(new java.awt.Color(102, 102, 102));
-        btn_valid.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        btn_valid.setText("Valider");
-
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Prix de vente :");
-
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Quantite vendue :");
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Marque");
 
-        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Total         :");
+        marq_combo.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
 
-        qtel_txt.addKeyListener(new java.awt.event.KeyAdapter() {
+        qte_vendu_txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                qtel_txtKeyPressed(evt);
+                qte_vendu_txtKeyPressed(evt);
             }
         });
 
-        qte_dispo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        qte_dispo.setEnabled(false);
+        qte_dispo_txt.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        qte_dispo_txt.setEnabled(false);
 
-        jLabel8.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Quantite dispo:");
+        btn_valid.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        btn_valid.setForeground(new java.awt.Color(255, 255, 255));
+        btn_valid.setText("Valider");
+        btn_valid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_validActionPerformed(evt);
+            }
+        });
+        btn_valid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_validKeyPressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(marq_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cat_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(qtel_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(25, 25, 25)
-                                    .addComponent(prx_vte_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(prx_total_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(25, 25, 25)
-                                    .addComponent(qte_dispo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(btn_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cat_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(marq_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(qtel_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(qte_dispo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(prx_vte_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prx_total_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(26, 26, 26)
-                .addComponent(btn_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Quantite Vendu:");
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Quantite dispo:");
 
-        jLabel6.setText("Nombre d'article Vendu: ");
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Prix Total  :");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
-        );
+        prx_total_txt.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        prx_total_txt.setEnabled(false);
+
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Prix de Vente:");
+
+        prx_vte_txt.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        prx_vte_txt.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(prx_total_txt)
+                            .addComponent(prx_vte_txt)
+                            .addComponent(marq_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cat_combo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 223, Short.MAX_VALUE)
+                            .addComponent(qte_vendu_txt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(qte_dispo_txt, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(2, 2, 2))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cat_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(marq_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(qte_vendu_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(qte_dispo_txt)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(prx_vte_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prx_total_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_valid, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Insertion");
+        jMenuItem1.setText("jMenuItem1");
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Caisse");
+        jMenuItem2.setText("jMenuItem2");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem4.setText("Compte Rendu");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem3.setText("Deconnexion");
+        jMenuItem3.setText("jMenuItem3");
         jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
@@ -300,18 +241,234 @@ public class VteArtFrm   extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void qte_vendu_txtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qte_vendu_txtKeyPressed
+        JOptionPane jop = new JOptionPane();
+        
+       // jop.showMessageDialog(jLabel2, " code de la touche clavier entree: " +evt.getKeyCode() );
+
+        if ( evt.getKeyCode() !=10 ) {
+
+            if (evt.getKeyCode() ==8 ) {
+
+                if (value.equals("")) {
+
+                    prx_total_txt.setText("");
+
+                }else{
+
+                    if (value.length() == 1 ) {
+
+                        value = value.substring(0,0);
+                        qte_vendu_txt.setText("");
+                        prx_total_txt.setText("");
+
+                    }else{
+
+                        value = value.substring(0, value.length()-1);
+
+                        float qte = Float.valueOf(value);
+
+                        float prx =  Float.valueOf(prx_vte_txt.getText());
+
+                        prx_total_txt.setText(""+prx*qte+"");
+                    }
+
+                }
+                //jop.showMessageDialog(jPanel2, " Nouvelle valeur : " + value);
+
+            }
+
+            if (evt.getKeyCode() != 8) {
+
+                if (  (evt.getKeyCode() < 48 || evt.getKeyCode() > 57)   ) {
+
+                    jop.showMessageDialog(jPanel2, " Saisissez la quantite vendu  !!!");
+                    qte_vendu_txt.setText("");
+                    prx_total_txt.setText("");
+                    value = "";
+
+                }else{
+
+                    value += evt.getKeyText(evt.getKeyCode());
+
+                    float dispo = Float.valueOf(qte_dispo_txt.getText());
+
+                    float qte = Float.valueOf(value);
+
+                    if ( qte > dispo  ) {
+                        jop.showMessageDialog(jPanel2, "Vous avez depasser la quantite disponible ");
+                        prx_total_txt.setText("");
+                        qte_vendu_txt.setText("");
+                        qte=0;
+                        value= "";
+
+                    }else{
+                        
+                        
+                        float prx =  Float.valueOf(prx_vte_txt.getText());
+
+                        prx_total_txt.setText(""+prx*qte+"");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_qte_vendu_txtKeyPressed
+
+    private void cat_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cat_comboItemStateChanged
+
+        Connection  conx;
+        try {
+            conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
+
+            PreparedStatement st ;
+            ResultSet res;
+
+            st= conx.prepareStatement("select marq_cat, prx_vte_cat, qte_dispo_cat, qte_vendu_cat from categorie where lib_cat = ?");
+
+            st.setString(1, cat_combo.getSelectedItem().toString());
+            res= st.executeQuery();
+
+            marq_combo.removeAllItems();
+
+            while (res.next()) {
+
+                marq_combo.addItem(res.getString("marq_cat"));
+                qte_dispo_txt.setText(res.getString("qte_dispo_cat"));
+                prx_vte_txt.setText(res.getString("prx_vte_cat"));
+                vendu= res.getInt("qte_vendu_cat");
+            }
+            
+//            prx_total_txt.setText("");
+//            qte_vendu_txt.setText("");
+//            
+        } catch (SQLException ex) {
+            Logger.getLogger(VteArtFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_cat_comboItemStateChanged
+
+    private void btn_validActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validActionPerformed
+       int qte=  Integer.valueOf(qte_vendu_txt.getText());
+       
+       Connection conx;
+       
+      try {
+          conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
+          
+           PreparedStatement st ;
+           Statement req;
+            ResultSet res;
+            
+            //requete preparee de mise a jour de la quantite vendu 
+            st= conx.prepareStatement("update categorie set qte_vendu_cat = ?  where lib_cat = ?");
+            //parametres associe a la requete associee 
+            st.setString(1,String.valueOf(vendu+qte));//conversion d'entier en chaine de caracteres 
+            st.setString(2, cat_combo.getSelectedItem().toString());
+            //execution de la requet de mise a jour 
+            int r= st.executeUpdate();
+            
+            
+            //conversion du texte quantite dispo en entier 
+            int dispo= Integer.valueOf(qte_dispo_txt.getText());
+            //conversion du texte quantite vendu en entier 
+            int vendu = Integer.valueOf(qte_vendu_txt.getText());
+            //requete preparee de mise a jour de la quantite diposnible 
+            st= conx.prepareStatement("update categorie set qte_dispo_cat= ? where lib_cat = ?");
+            
+            //parametres associes a la requete 
+            st.setInt(1,dispo-qte );
+             st.setString(2, cat_combo.getSelectedItem().toString());
+            //execution de la requete 
+            r= st.executeUpdate();
+            
+            
+            qte_dispo_txt.setText( String.valueOf(dispo-qte));
+            
+            if (r != 0) {
+                
+              JOptionPane j = new JOptionPane();
+              
+              j.showMessageDialog(jPanel2, "validation effectuee avec succes");
+              
+          }
+            
+      } catch (SQLException ex) {
+          Logger.getLogger(VteArtFrm.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      
+    }//GEN-LAST:event_btn_validActionPerformed
+
+    private void btn_validKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_validKeyPressed
+        if(evt.getKeyCode()==10) {
+            
+             int qte=  Integer.valueOf(qte_vendu_txt.getText());
+       
+                Connection conx;
+
+               try {
+                   conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
+
+                    PreparedStatement st ;
+                    Statement req;
+                     ResultSet res;
+
+                     //requete preparee de mise a jour de la quantite vendu 
+                     st= conx.prepareStatement("update categorie set qte_vendu_cat = ?  where lib_cat = ?");
+                     //parametres associe a la requete associee 
+                     st.setString(1,String.valueOf(vendu+qte));//conversion d'entier en chaine de caracteres 
+                     st.setString(2, cat_combo.getSelectedItem().toString());
+                     //execution de la requet de mise a jour 
+                     int r= st.executeUpdate();
+
+
+                     //conversion du texte quantite dispo en entier 
+                     int dispo= Integer.valueOf(qte_dispo_txt.getText());
+                     //conversion du texte quantite vendu en entier 
+                     int vendu = Integer.valueOf(qte_vendu_txt.getText());
+                     //requete preparee de mise a jour de la quantite diposnible 
+                     st= conx.prepareStatement("update categorie set qte_dispo_cat= ? where lib_cat = ?");
+
+                     //parametres associes a la requete 
+                     st.setInt(1,dispo-qte );
+                      st.setString(2, cat_combo.getSelectedItem().toString());
+                     //execution de la requete 
+                     r= st.executeUpdate();
+
+
+                     qte_dispo_txt.setText( String.valueOf(dispo-qte));
+
+                     if (r != 0) {
+
+                       JOptionPane j = new JOptionPane();
+
+                       j.showMessageDialog(jPanel2, "validation effectuee avec succes");
+
+                   }
+
+               } catch (SQLException ex) {
+                   Logger.getLogger(VteArtFrm.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        }
+    }//GEN-LAST:event_btn_validKeyPressed
+
+    
     private void populate_Cat() throws SQLException{
         
         Connection  conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
@@ -325,100 +482,12 @@ public class VteArtFrm   extends javax.swing.JFrame {
         while (res.next()) {            
             
             cat_combo.addItem(res.getString("lib_cat"));
+            
         }
+        qte_vendu_txt.setText("");
+        prx_total_txt.setText("");
+    
     }
-    
-    
-     private void populate_Marq( String cat) throws SQLException{
-        
-        
-    }
-     
-//     private class ItemState implements ItemListener{
-//         
-//        @Override
-//        public void itemStateChanged(ItemEvent e) {
-//         
-//            
-//        }
-//         
-//     }
-    
-    private void cat_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cat_comboActionPerformed
-       // System.out.println( "Element selectionne : "+cat_combo.getSelectedItem()); 
-       // cat_combo.addItemListener(new ItemState());
-    }//GEN-LAST:event_cat_comboActionPerformed
-
-    private void marq_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marq_comboActionPerformed
-        //marq_combo.addItemListener(new ItemState()); 
-    }//GEN-LAST:event_marq_comboActionPerformed
-   
-    
-    private void cat_comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cat_comboItemStateChanged
-          JOptionPane fen = new JOptionPane();   
-          
-          
-           if (evt.getSource() == cat_combo) {
-               
-          try {
-              Connection  conx = DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
-            
-            String cat = evt.getItem().toString()  ;
-           PreparedStatement st ;
-            ResultSet res;
-
-            st= conx.prepareStatement(" select  marq_cat, prx_vte_cat, stock_init_cat  from categorie where lib_cat = ?");
-            st.setString(1, cat);
-            
-            res= st.executeQuery();
-            
-            marq_combo.removeAllItems();
-            
-            while (res.next()) {
-                marq_combo.addItem(res.getString("marq_cat"));
-                prx_vte_txt.setText(res.getString("prx_vte_cat"));
-                qte_dispo.setText(res.getString("stock_init_cat"));
-            }
-          
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-         
-        } 
-    }//GEN-LAST:event_cat_comboItemStateChanged
-
-    private void prx_total_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prx_total_txtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prx_total_txtActionPerformed
-
-    private void prx_total_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prx_total_txtKeyTyped
-        
-        
-    }//GEN-LAST:event_prx_total_txtKeyTyped
-
-    private void qtel_txtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtel_txtKeyPressed
-       JOptionPane jop = new JOptionPane();
-        
-        
-        
-//        
-        
-        if ( (evt.getKeyCode() < 48 || evt.getKeyCode() > 57)   ) {
-           
-            if (evt.getKeyCode() == 10 ) {
-                byte p =0;
-                
-            }else{
-                
-                jop.showConfirmDialog(jPanel2, " Saisissez la quantite vendu  !!!");
-                qtel_txt.setText("");
-            }
-            
-        }
-        
-        //Long  qte= Long.valueOf(evt.getKeyText(evt.getKeyCode()));
-    }//GEN-LAST:event_qtel_txtKeyPressed
-    
     
     
     /**
@@ -463,17 +532,12 @@ public class VteArtFrm   extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_valid;
     private javax.swing.JComboBox cat_combo;
-    private java.util.List<gestlib.Categorie> categorieList;
-    private javax.persistence.Query categorieQuery;
-    private javax.persistence.EntityManager entityManager;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -483,17 +547,10 @@ public class VteArtFrm   extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox marq_combo;
     private javax.swing.JTextField prx_total_txt;
     private javax.swing.JTextField prx_vte_txt;
-    private javax.swing.JTextField qte_dispo;
-    private javax.swing.JTextField qtel_txt;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.swing.JTextField qte_dispo_txt;
+    private javax.swing.JTextField qte_vendu_txt;
     // End of variables declaration//GEN-END:variables
-
-    
-
-
-
 }

@@ -57,7 +57,7 @@ public class ArtDAO {
         int i= 0;
         
             req= this.conx.createStatement();
-            result = req.executeQuery(" select id_cat, lib_cat, prx_acq_cat, prx_vte_cat, date_acq_cat, stock_init_cat, stock_vendu_cat, marq_cat from categorie");
+            result = req.executeQuery(" select id_cat, lib_cat, prx_acq_cat, prx_vte_cat, date_acq_cat, qte_dispo_cat, qte_vendu_cat, marq_cat from categorie");
            
             int n =  this.getNbArticles();
          
@@ -65,7 +65,7 @@ public class ArtDAO {
             
             while (result.next()) {  
                 
-               CategorieArticle art= new CategorieArticle (Integer.valueOf(result.getString("id_cat")), result.getString("lib_cat"), Float.valueOf(result.getString("prx_acq_cat")) , Float.valueOf(result.getString("prx_vte_cat")), result.getString("date_acq_cat"), Long.valueOf( result.getString("stock_init_cat")), Long.valueOf(result.getString("stock_vendu_cat")), result.getString("marq_cat"));
+               CategorieArticle art= new CategorieArticle (Integer.valueOf(result.getString("id_cat")), result.getString("lib_cat"), Float.valueOf(result.getString("prx_acq_cat")) , Float.valueOf(result.getString("prx_vte_cat")), result.getString("date_acq_cat"), Long.valueOf( result.getString("qte_dispo_cat")), Long.valueOf(result.getString("qte_vendu_cat")), result.getString("marq_cat"));
                 
                list.Ajouter(art);          
                i++;

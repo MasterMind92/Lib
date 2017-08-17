@@ -19,6 +19,7 @@ public class GestLib {
     public static void main(String[] args) {
       
         try {
+            
             // 1. Get a connection  to the database
             Connection conx= DriverManager.getConnection("jdbc:mysql://localhost:3306/librairie" ,"root","");
             
@@ -32,13 +33,9 @@ public class GestLib {
             while (result.next()) {                
                 System.out.println(result.getString("lib_art")+" "+ result.getString("prx_vte_art"));
             }
-            
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       
-        
     }
     
 }
